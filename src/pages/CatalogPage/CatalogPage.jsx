@@ -40,11 +40,9 @@ const CatalogPage = () => {
   const handleLearnMore = (carId) => {
     setModalIsOpen((prevState) => ({
       ...prevState,
-      [carId]: true
+      [carId]: true,
     }));
   };
-
-
 
   const handleLoadMore = () => {
     const nextPage = page + 1;
@@ -83,21 +81,27 @@ const CatalogPage = () => {
                   </h2>
                   <h2 className="item-title-text">{car.rentalPrice}</h2>
                 </div>
+                <div className="add-inf-box">
+                  <p>{car.address.split(',')[1]?.trim()} |</p>
+                  <p> {car.address.split(',')[2]?.trim()} |</p>
+                  <p>{car.rentalCompany} |</p>
+                  <p> {car.accessories[0]} </p>
+                </div>
+                <div className="add-inf-box">
+                  <p>{car.type} |</p>
+                  <p>{car.id} |</p>
+                  <p>{car.functionalities[0]}</p>
+                </div>
+
                 <button
                   type="button"
                   className="more-btn"
                   onClick={() => handleLearnMore(car.id)}
-                  
                 >
                   Learn more
                 </button>
-                {modalIsOpen [car.id] && (
-                  
-                    <CarModal                    
-                    car={car}
-                    onCloseModal={() => setModalIsOpen({})}
-                    />
-                  
+                {modalIsOpen[car.id] && (
+                  <CarModal car={car} onCloseModal={() => setModalIsOpen({})} />
                 )}
               </CarItem>
             ))}

@@ -23,6 +23,9 @@ export const StyledLogo= styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 36px;
-  color: inherit;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 520;
+  line-height: 24px;
+  color: black;
 `;

@@ -12,10 +12,10 @@ export const CarList = styled.div`
 `;
 
 export const CarItem = styled.div`
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
   border-radius: 14px;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,16 +51,32 @@ export const CarItem = styled.div`
   .item-title {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 8px;
   }
 
   .item-title-text {
     margin-top: 14px;
     font-size: 16px;
-    font-family: Manrope;
     font-weight: 500;
   }
   span {
     color: #3470ff;
+  }
+
+  .add-inf-box {
+    display: flex;
+    gap: 5px;
+    color: rgba(18, 20, 23, 0.5);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
   }
 
   .more-btn {

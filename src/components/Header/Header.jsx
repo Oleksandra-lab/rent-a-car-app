@@ -8,6 +8,7 @@ const Header = () => {
       <HeaderContainer>
       <StyledLogo to="/">
         <img src={logo} alt="Logo" width={50} to="/"/>
+        <p>Rent a car</p>
       </StyledLogo>
 
       <Navigation />
