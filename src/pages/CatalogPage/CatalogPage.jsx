@@ -48,6 +48,7 @@ const CatalogPage = () => {
     return <div>Error: {error}</div>;
   }
   const carArr = Array.isArray(cars) && cars.length > 0;
+  
 
   const handleFavoriteClick = (carId) => {
     const updatedFavorites = { ...favorites, [carId]: !favorites[carId] };
@@ -126,12 +127,13 @@ const CatalogPage = () => {
               </CarItem>
             ))}
           {!carArr && <div>No cars available</div>}
+          
         </CarList>
-        {/* {endIndex < cars.length && ( */}
-        <button type="button" className="load-btn" onClick={handleLoadMore}>
-          Load more
-        </button>
-        {/* )} */}
+        {carArr && (
+  <button type="button" className="load-btn" onClick={handleLoadMore}>
+    Load more
+  </button>
+)}
       </CarCatalogContainer>
     </div>
   );
