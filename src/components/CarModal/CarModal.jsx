@@ -1,38 +1,6 @@
-import React, { useEffect, useCallback } from "react";
-import styled from "styled-components";
+import  { useEffect, useCallback } from "react";
 
-const ModalBackdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Півпрозорий чорний колір */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999; /* Забезпечує, що модальне вікно буде поверх усіх інших елементів */
-`;
-
-const ModalContent = styled.div`
-position: relative;
-  background-color: white;
-  padding: 40px;
-  border-radius: 8px;
-  max-width: 80%;
-  max-height: 80%;
-  overflow: auto;
-`;
-
-const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-`;
+import { CloseButton, ModalContent, ModalOverlay } from "./CarModal.styled";
 
 const CarModal = ({ car, onCloseModal }) => {
   const handleCloseModal = useCallback(
@@ -62,69 +30,76 @@ const CarModal = ({ car, onCloseModal }) => {
   }, [handleKeyPress]);
 
   return (
-    <ModalBackdrop onClick={handleCloseModal}>
+    <ModalOverlay onClick={handleCloseModal}>
       <ModalContent>
         <CloseButton onClick={onCloseModal}>&times;</CloseButton>
-        {/* Додайте тут вміст модального вікна */}
-        <img
-                    src={car.img}
-                    alt={`${car.model}`}
-                    style={{ height: "280px" }}
-                  />
-        <h2>{car.make} {car.model}</h2>
-        <p>Year: {car.year}</p>
-        <p>Rental Price: {car.rentalPrice}</p>
+        <div className="modal-img-wrapper">
+          <img src={car.img} alt={`${car.model}`} style={{ height: "280px" }} />
+        </div>
+
+        <div className="modal-title">
+          <h2 className="modal-title-text">
+            {car.make} <span>{car.model}</span>, {car.year}
+          </h2>
+        </div>
+
+        <div className="add-inf-box">
+          <p>{car.address.split(",")[1]?.trim()} |</p>
+          <p> {car.address.split(",")[2]?.trim()} |</p>
+          <p>id: {car.id} |</p>
+          <p>Year: {car.year} |</p>
+          <p>Type: {car.type}</p>
+        </div>
+        <div className="add-inf-box">
+          <p>Fuel consumption: {car.fuelConsumption} |</p>
+          <p>Enginesize: {car.engineSize}</p>
+        </div>
+        <div style={{ marginBottom: '20px' }} >
+          <p >{car.description}</p>
+        </div>
+        <div style={{ marginBottom: '20px' }}>
+          <h3 style={{ marginBottom: '8px' }}>Accessories and functionalities:</h3>
+          <div>
+            <div className="add-inf-box">
+              <p>{car.functionalities[0]} |</p>
+              <p>{car.functionalities[1]} |</p>
+              <p>{car.functionalities[2]}</p>
+            </div>
+            <div className="add-inf-box">
+              <p>{car.accessories[0]} |</p>
+              <p>{car.accessories[1]} |</p>
+              <p>{car.accessories[2]}</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Rental Conditions:</h3>
+          <ul className="conditions">
+            <li>
+              Minimum age:
+              <span className="age">
+                {car.rentalConditions.match(/\d+/)?.[0]}
+              </span>
+            </li>
+            <li>Valid driver’s license</li>
+            <li>Security deposite required</li>
+            <li>
+              Mileage: <span>{car.mileage}</span>
+            </li>
+            <li>
+              Price: <span>{car.rentalPrice}</span>
+            </li>
+          </ul>
+        </div>
+        <a className="link-button" href="tel:+380730000000">
+          Rental car
+        </a>
+
         {/* Приклад виводу деякої інформації про машину */}
       </ModalContent>
-    </ModalBackdrop>
+    </ModalOverlay>
   );
 };
 
 export default CarModal;
-
-
-
-
-// // import React from 'react';
-// import styled from 'styled-components';
-
-// const ModalContainer = styled.div`
-//   background-color: #ffffff;
-//   border-radius: 8px;
-//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-//   padding: 20px;
-//   max-width: 400px;
-//   margin: 0 auto;
-// `;
-
-// const CloseButton = styled.button`
-//   background-color: #ff6347;
-//   color: #ffffff;
-//   border: none;
-//   border-radius: 4px;
-//   padding: 8px 16px;
-//   cursor: pointer;
-//   transition: background-color 0.3s ease;
-
-//   &:hover {
-//     background-color: #ff4837;
-//   }
-// `;
-
-// const CarModal = ( {car, onCloseModal }) => {
-//   return (
-//     <ModalContainer>
-//       <h2>{car.make} {car.model}</h2>
-//       <p>Year: {car.year}</p>
-//       <p>Rental Price: {car.rentalPrice}</p>
-//       <p>Color: {car.color}</p>
-//       {/* Add other properties you want to display */}
-//       <CloseButton onClick={onCloseModal}>Close</CloseButton>
-//     </ModalContainer>
-//   );
-// };
-
-// export default CarModal;
-
-
 
