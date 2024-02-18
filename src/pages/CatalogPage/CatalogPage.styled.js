@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const CarCatalogContainer = styled.div`
-  margin: 20px;
+max-width: 1280px;
+  margin: 0 auto;
 `;
 
 export const CarList = styled.div`

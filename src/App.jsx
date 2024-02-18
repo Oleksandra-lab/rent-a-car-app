@@ -14,7 +14,6 @@ function App() {
   return (
     <>
     <Header/>
-      <h1>Hello Rent-a-car-app</h1>
       <Suspense fallback={<Loader />}>
         <Routes>
         <Route path="/" element={<HomePage />} />

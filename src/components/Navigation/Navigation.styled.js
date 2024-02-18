@@ -6,15 +6,16 @@ align-items: center;
 `;
 export const StyledUl = styled.ul`
 display: flex;
-  gap: 16px;
-  font-size: 16px;
+  gap: 20px;
+  font-size: 36px;
+  color: inherit;
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
-  color: white;
-  li:hover,
-  li:focus {
-    color: black;
-  }
+  // color: white;
+  // li:hover,
+  // li:focus {
+  //   color: black;
+  // }
 `;
 

@@ -1,16 +1,18 @@
 import logo from "/car-rent-icon.svg";
-import { StyledHeader, StyledLogo } from "./Header.styled";
+import { HeaderContainer, StyledHeader, StyledLogo } from "./Header.styled";
 import Navigation from "../Navigation/Navigation";
 
 const Header = () => {
   return (
     <StyledHeader>
+      <HeaderContainer>
       <StyledLogo to="/">
-        <img src={logo} alt="Logo" width={50} />
-        <p>Rent a car</p>
+        <img src={logo} alt="Logo" width={50} to="/"/>
       </StyledLogo>
 
       <Navigation />
+
+      </HeaderContainer>
     </StyledHeader>
   );
 };
