@@ -1,8 +1,20 @@
 import styled from "styled-components";
 
 export const CarCatalogContainer = styled.div`
+
 max-width: 1280px;
   margin: 0 auto;
+
+  .load-btn {
+    background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  color: blue; 
+  text-decoration: underline;
+}
+  }
 `;
 
 export const CarList = styled.div`
@@ -95,4 +107,6 @@ export const CarItem = styled.div`
     line-height: 1.42;
     color: #fff;
   }
+
+  
 `;

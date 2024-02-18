@@ -48,7 +48,6 @@ const CatalogPage = () => {
     return <div>Error: {error}</div>;
   }
   const carArr = Array.isArray(cars) && cars.length > 0;
-  
 
   const handleFavoriteClick = (carId) => {
     const updatedFavorites = { ...favorites, [carId]: !favorites[carId] };
@@ -84,7 +83,6 @@ const CatalogPage = () => {
                     style={{ height: "280px" }}
                   />
                   <svg
-                    
                     width="18"
                     height="18"
                     viewBox="0 0 24 24"
@@ -103,8 +101,8 @@ const CatalogPage = () => {
                   <h2 className="item-title-text">{car.rentalPrice}</h2>
                 </div>
                 <div className="add-inf-box">
-                  <p>{car.address.split(',')[1]?.trim()} |</p>
-                  <p> {car.address.split(',')[2]?.trim()} |</p>
+                  <p>{car.address.split(",")[1]?.trim()} |</p>
+                  <p> {car.address.split(",")[2]?.trim()} |</p>
                   <p>{car.rentalCompany} |</p>
                   <p> {car.accessories[0]} </p>
                 </div>
@@ -127,13 +125,11 @@ const CatalogPage = () => {
               </CarItem>
             ))}
           {!carArr && <div>No cars available</div>}
-          
         </CarList>
-        {carArr && (
-  <button type="button" className="load-btn" onClick={handleLoadMore}>
-    Load more
-  </button>
-)}
+
+        <button type="button" className="load-btn" onClick={handleLoadMore}>
+          Load more
+        </button>
       </CarCatalogContainer>
     </div>
   );
