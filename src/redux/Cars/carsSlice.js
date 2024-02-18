@@ -2,14 +2,13 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { requestAllCars } from '../../services/api';
 
 
-export const fetchCars = createAsyncThunk('cars/fetchCars', async () => {
+export const fetchCars = createAsyncThunk('cars/fetchCars', async (page) => {
   
-  const response = await requestAllCars();
+  const response = await requestAllCars(page);
   console.log(response);
   return response;
 });
 
-// Створюємо slice для автомобілів
 const carsSlice = createSlice({
   name: 'cars',
   initialState: {
