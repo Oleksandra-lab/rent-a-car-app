@@ -11,8 +11,8 @@ max-width: 1280px;
   padding: 0;
   font: inherit;
   cursor: pointer;
-  color: blue; 
-  text-decoration: underline;
+  color: #3470ff; 
+  text-decoration: underline; 
 }
   }
 `;

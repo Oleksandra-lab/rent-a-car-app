@@ -124,12 +124,15 @@ const CatalogPage = () => {
                 )}
               </CarItem>
             ))}
-          {!carArr && <div>No cars available</div>}
         </CarList>
-
-        <button type="button" className="load-btn" onClick={handleLoadMore}>
-          Load more
-        </button>
+        {carArr && cars.length === 12 && (
+        <div style={{ textAlign: "center", marginTop: '24px', marginBottom: '24px' }}>
+          <button type="button" className="load-btn" onClick={handleLoadMore}>
+            Load more
+          </button>
+        </div>
+      )}
+        
       </CarCatalogContainer>
     </div>
   );
