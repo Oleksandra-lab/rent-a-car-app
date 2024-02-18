@@ -41,6 +41,7 @@ export const CarItem = styled.div`
       top: 14px;
       right: 14px;
       stroke: white;
+      cursor: pointer;
       &.favored {
         fill: blue;
         stroke: white;

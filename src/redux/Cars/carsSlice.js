@@ -5,7 +5,6 @@ import { requestAllCars } from '../../services/api';
 export const fetchCars = createAsyncThunk('cars/fetchCars', async (page) => {
   
   const response = await requestAllCars(page);
-  console.log(response);
   return response;
 });
 
