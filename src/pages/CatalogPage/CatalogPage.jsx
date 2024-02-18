@@ -17,12 +17,24 @@ const CatalogPage = () => {
   const cars = useSelector(selectCars);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const [favorites, setFavorites] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     dispatch(fetchCars(page));
   }, [dispatch, page]);
+
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    if (storedFavorites) {
+      setFavorites(JSON.parse(storedFavorites));
+    }
+  }, []);
+
+  const saveFavoritesToLocalStorage = (updatedFavorites) => {
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
 
   if (isLoading) {
     return (
@@ -36,6 +48,12 @@ const CatalogPage = () => {
     return <div>Error: {error}</div>;
   }
   const carArr = Array.isArray(cars) && cars.length > 0;
+
+  const handleFavoriteClick = (carId) => {
+    const updatedFavorites = { ...favorites, [carId]: !favorites[carId] };
+    setFavorites(updatedFavorites);
+    saveFavoritesToLocalStorage(updatedFavorites);
+  };
 
   const handleLearnMore = (carId) => {
     setModalIsOpen((prevState) => ({
@@ -65,12 +83,14 @@ const CatalogPage = () => {
                     style={{ height: "280px" }}
                   />
                   <svg
-                    fill="none"
+                    
                     width="18"
                     height="18"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                     className="heart"
+                    fill={favorites[car.id] ? "#3470ff" : "none"}
+                    onClick={() => handleFavoriteClick(car.id)}
                   >
                     <path d="M12 20a1 1 0 0 1-.437-.1C11.214 19.73 3 15.671 3 9a5 5 0 0 1 8.535-3.536l.465.465.465-.465A5 5 0 0 1 21 9c0 6.646-8.212 10.728-8.562 10.9A1 1 0 0 1 12 20z" />
                   </svg>

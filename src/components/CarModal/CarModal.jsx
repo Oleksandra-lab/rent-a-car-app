@@ -50,7 +50,7 @@ const CarModal = ({ car, onCloseModal }) => {
           <p>Year: {car.year} |</p>
           <p>Type: {car.type}</p>
         </div>
-        <div className="add-inf-box">
+        <div className="add-inf-box" style={{ marginBottom: '16px' }}>
           <p>Fuel consumption: {car.fuelConsumption} |</p>
           <p>Enginesize: {car.engineSize}</p>
         </div>
@@ -94,8 +94,6 @@ const CarModal = ({ car, onCloseModal }) => {
         <a className="link-button" href="tel:+380730000000">
           Rental car
         </a>
-
-        {/* Приклад виводу деякої інформації про машину */}
       </ModalContent>
     </ModalOverlay>
   );
